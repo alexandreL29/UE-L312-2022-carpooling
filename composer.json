@@ -1,15 +1,14 @@
 {
-    "name": "godevinc/ue-3dw15-2020-carpooling",
-    "authors": [
-        {
-            "name": "Vincent Godé",
-            "email": "vincent.gode@groupe-celios.fr"
-        }
-    ],
-    "require": {},
+    "name": "jerem/ue-l312-2022-carpooling",
     "autoload": {
         "psr-4": {
-            "App\\": "class/"
+            "Jerem\\UeL3122022Carpooling\\": "class/"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "Jérémy Hayotte"
+        }
+    ],
+    "require": {}
 }
