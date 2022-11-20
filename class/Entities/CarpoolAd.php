@@ -40,7 +40,7 @@ class CarpoolAd
 
     public function getDestination(string $destination): void
     {
-        $this->idestination = $destination;
+        $this->destination = $destination;
     }
 
     public function getDepartureTime(): DateTime
