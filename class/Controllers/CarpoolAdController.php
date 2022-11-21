@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Services\CarpoolAdService;
 
-class UsersController
+class CarpoolAdController
 {
     /**
      * Return the html for the create action.
@@ -54,7 +54,7 @@ class UsersController
                 '#' . $ad->getId() . ' ' .
                 $ad->getStartPlace() . ' ' .
                 $ad->getDestination() . ' ' .
-                $ad->getDepartureTime()->format('d-hh:mm') . ' ' .
+                $ad->getDepartureTime()->format('dd-MM-yyyy hh:mm') . ' ' .
                 $ad->getPrice() . '<br />';
         }
 
