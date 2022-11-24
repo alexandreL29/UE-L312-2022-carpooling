@@ -20,7 +20,7 @@ class CarpoolAdController
             isset($_POST['price'])) {
             // Create the user :
             $carpoolAdService = new CarpoolAdService();
-            $isOk = $carpoolAdService->setUser(
+            $isOk = $carpoolAdService->setCarpoolAd(
                 null,
                 $_POST['start_place'],
                 $_POST['destination'],
@@ -40,16 +40,16 @@ class CarpoolAdController
     /**
      * Return the html for the read action.
      */
-    public function getCarpoolAd(): string
+    public function getCarpoolAds(): string
     {
         $html = '';
 
         // Get all carpool ad :
         $carpoolAdService = new CarpoolAdService();
-        $carpoolAd = $carpoolAdService->getCarpoolAd();
+        $carpoolAds = $carpoolAdService->getCarpoolAds();
 
         // Get html :
-        foreach ($carpoolAd as $ad) {
+        foreach ($carpoolAds as $ad) {
             $html .=
                 '#' . $ad->getId() . ' ' .
                 $ad->getStartPlace() . ' ' .

@@ -72,7 +72,7 @@ class BookingsController
             isset($_POST['number'])) {
             // Update the booking :
             $bookingsService = new BookingsService();
-            $isOk = $bookingsService->setBookings(
+            $isOk = $bookingsService->setBooking(
                 $_POST['id'],
                 $_POST['day'],
                 $_POST['horary'],
@@ -99,7 +99,7 @@ class BookingsController
         if (isset($_POST['id'])) {
             // Delete the booking :
             $bookingsService = new BookingsService();
-            $isOk = $bookingsService->deleteBookings($_POST['id']);
+            $isOk = $bookingsService->deleteBooking($_POST['id']);
             if ($isOk) {
                 $html = 'Réservation supprimé avec succès.';
             } else {
