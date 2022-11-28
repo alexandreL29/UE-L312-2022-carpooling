@@ -10,15 +10,16 @@ class CarpoolAdService
     /**
      * Create or update a carpooll ad.
      */
-    public function setCarpoolAd(?string $id, string $start_place, string $destination, string $departure_time, string $price): bool
+    public function setCarpoolAd(string $id, string $start_place, string $destination, string $departure_time, int $price): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
+        $departure_timeDateTime = new DateTime($departure_time);
         if (empty($id)) {
-            $isOk = $dataBaseService->createCarpoolAd($start_place, $destination, $departure_time, $price);
+            $isOk = $dataBaseService->createCarpoolAd($start_place, $destination, $departure_timeDateTime, $price);
         } else {
-            $isOk = $dataBaseService->updateCar($id, $start_place, $destination, $departure_time, $price);
+            $isOk = $dataBaseService->updateCarpoolAd($id, $start_place, $destination, $departure_timeDateTime, $price);
         }
 
         return $isOk;
@@ -39,7 +40,10 @@ class CarpoolAdService
                 $carpoolad->setId($carpooladDTO['id']);
                 $carpoolad->setStartPlace($carpooladDTO['start_place']);
                 $carpoolad->setDestination($carpooladDTO['destination']);
-                $carpoolad->setDepartureTime($carpooladDTO['departure_time']);
+                $departuredate = new DateTime($carpooladDTO['departure_time']);
+                if ($departuredate !== false) {
+                    $carpoolad->setDepartureTime($departuredate);
+                }
                 $carpoolad->setPrice($carpooladDTO['price']);
                 $carpoolads[] = $carpoolad;
             }

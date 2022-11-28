@@ -189,7 +189,7 @@ class DataBaseService
 
 
     /**
-     * Create a car.
+     * Create a booking.
      */
     public function createBooking(string $day, string $horary, int $number): bool
     {
@@ -227,7 +227,7 @@ class DataBaseService
     /**
      * Update a booking.
      */
-    public function updateBooking(string $id, string $day, string $horary, string $number): bool
+    public function updateBooking(string $id, string $day, string $horary, int $number): bool
     {
         $isOk = false;
 
@@ -245,7 +245,7 @@ class DataBaseService
     }
 
     /**
-     * Delete an user.
+     * Delete a booking.
      */
     public function deleteBooking(string $id): bool
     {
@@ -261,20 +261,20 @@ class DataBaseService
         return $isOk;
     }
 
-    /*************************** CarpooAd functions *******************************************/
+    /*************************** CarpoolAd functions *******************************************/
 
 
     /**
      * Create a carpool ad.
      */
-    public function createCarpoolAd(string $start_place, string $destination, string $departure_time, string $price): bool
+    public function createCarpoolAd(string $start_place, string $destination, DateTime $departure_time, string $price): bool
     {
         $isOk = false;
 
         $data = [
             'start_place' => $start_place,
             'destination' => $destination,
-            'departure_time' => $departure_time,
+            'departure_time' => $departure_time->format(DateTime::RFC3339),
             'price' => $price,
         ];
         $sql = 'INSERT INTO carpoolads (start_place, destination, departure_time, price) VALUES (:start_place, :destination, :departure_time, :price)';
@@ -304,7 +304,7 @@ class DataBaseService
     /**
      * Update a carpool ad.
      */
-    public function updateCarpoolAd(string $id, string $start_place, string $destination, string $departure_time, string $price): bool
+    public function updateCarpoolAd(string $id, string $start_place, string $destination, DateTime $departure_time, string $price): bool
     {
         $isOk = false;
 
@@ -312,7 +312,7 @@ class DataBaseService
             'id' => $id,
             'start_place' => $start_place,
             'destination' => $destination,
-            'departure_time' => $departure_time,
+            'departure_time' => $departure_time->format(DateTime::RFC3339),
             'price' => $price,
         ];
         $sql = 'UPDATE carpoolads SET start_place = :start_place, destination = :destination, departure_time = :departure_time, price = :price WHERE id = :id;';

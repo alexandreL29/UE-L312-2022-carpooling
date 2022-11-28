@@ -10,12 +10,11 @@ class CarsService
     /**
      * Create or update a car.
      */
-    public function setCar(?string $id, string $license_plate, string $color, string $cost, int $nb_seat): bool
+    public function setCar(string $id, string $license_plate, string $color, int $cost, int $nb_seat): bool
     {
         $isOk = false;
 
         $dataBaseService = new DataBaseService();
-        //$nb_seatDateTime = new DateTime($birthday);
         if (empty($id)) {
             $isOk = $dataBaseService->createCar($license_plate, $color, $cost, $nb_seat);
         } else {

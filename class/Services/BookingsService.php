@@ -10,7 +10,7 @@ class BookingsService
     /**
      * Create or update a booking.
      */
-    public function setBooking(?string $id, string $day, string $horary, int $number): bool
+    public function setBooking(string $id, string $day, string $horary, int $number): bool
     {
         $isOk = false;
 
